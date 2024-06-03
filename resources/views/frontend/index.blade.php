@@ -38,32 +38,6 @@
     <img src="{{ asset('assets/svgs/wavy-line-1.svg') }}" class="absolute -z-10 md:top-[160px] w-full"
     alt="tickety-assets">
 
-    {{-- Event Section --}}
-    <section id="eventSection" class="container relative max-w-screen-xl py-10">
-        <!-- Section Header -->
-        <div class="flex justify-between items-center gap-4 mb-[50px]">
-          <h5 class="text-[24px] md:text-[38px] font-bold">
-            <span class="text-butter-yellow">Big</span> Events, <br>
-            Coming <span class="text-butter-yellow">Soon</span>
-          </h5>
-    
-          @if (!request()->has('all_events'))
-            <a href="{{ request()->fullUrlWithQuery(['all_events' => 1]) }}" class="btn-primary">
-              View All
-            </a>
-          @endif
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
-            @foreach ($events as $event)
-
-            <x-frontend.card-event :cover="$event->thumbnail" :title="$event->name"
-            :category="$event->category->name" :date="$event->start_time" :price="$event->start_from" :isPopuler="$event->is_populer"
-            :description="$event->headline" :route="route('detail', $event->slug)" />
-            
-            @endforeach
-        </div>
-    </section>
 
     {{-- Category Section --}}
     <section id="categoriesSection" class="relative pb-[100px] overflow-hidden">
@@ -94,10 +68,39 @@
             </div>
         </div>
 
-         <!-- Wavy line ornament -->
-         <img src="{{ asset('assets/svgs/wavy-line-2.svg') }}" class="absolute -z-10 top-[250px] w-full"
-         alt="tickety-assets">
+         
+
+    {{-- Event Section --}}
+    <section id="eventSection" class="container relative max-w-screen-xl py-10">
+        <!-- Section Header -->
+        <div class="flex justify-between items-center gap-4 mb-[50px]">
+          <h5 class="text-[24px] md:text-[38px] font-bold">
+            <span class="text-butter-yellow">Big</span> Events, <br>
+            Coming <span class="text-butter-yellow">Soon</span>
+          </h5>
+    
+          @if (!request()->has('all_events'))
+            <a href="{{ request()->fullUrlWithQuery(['all_events' => 1]) }}" class="btn-primary">
+              View All
+            </a>
+          @endif
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+            @foreach ($events as $event)
+
+            <x-frontend.card-event :cover="$event->thumbnail" :title="$event->name"
+            :category="$event->category->name" :date="$event->start_time" :price="$event->start_from" :isPopuler="$event->is_populer"
+            :description="$event->headline" :route="route('detail', $event->slug)" />
+            
+            @endforeach
+        </div>
     </section>
+    <!-- Wavy line ornament -->
+    <img src="{{ asset('assets/svgs/wavy-line-2.svg') }}" class="absolute -z-10 top-[250px] w-full"
+    alt="tickety-assets">
+</section>
+
 
 
 
