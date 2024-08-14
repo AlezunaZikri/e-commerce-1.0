@@ -24,6 +24,7 @@ Route::post('/checkout/event/{slug}', [EventController::class,'checkout'])->name
 Route::post('/checkout/pay', [EventController::class,'checkoutPay'])->name('checkout-pay');
 Route::get('/checkout-success', [EventController::class,'checkoutSuccess'])->name('checkout-success');
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
